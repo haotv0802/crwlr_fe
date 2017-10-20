@@ -10,24 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var logout_service_1 = require("./logout.service");
 var router_1 = require("@angular/router");
-var LogoutComponent = /** @class */ (function () {
-    function LogoutComponent(_logoutService, _router) {
-        this._logoutService = _logoutService;
+var CollectedDataInChartsComponent = /** @class */ (function () {
+    function CollectedDataInChartsComponent(_router) {
         this._router = _router;
+        this.pageTitle = 'Collected Data in Charts';
     }
-    LogoutComponent.prototype.logout = function () {
-        this._logoutService.logout();
-        this._router.navigate(["welcome"]);
+    CollectedDataInChartsComponent.prototype.ngOnInit = function () {
     };
-    LogoutComponent = __decorate([
+    CollectedDataInChartsComponent = __decorate([
         core_1.Component({
-            template: ""
+            moduleId: module.id,
+            templateUrl: 'collectedDataInCharts.component.html'
         }),
-        __metadata("design:paramtypes", [logout_service_1.LogoutService, router_1.Router])
-    ], LogoutComponent);
-    return LogoutComponent;
+        __metadata("design:paramtypes", [router_1.Router])
+    ], CollectedDataInChartsComponent);
+    return CollectedDataInChartsComponent;
 }());
-exports.LogoutComponent = LogoutComponent;
-//# sourceMappingURL=logout.component.js.map
+exports.CollectedDataInChartsComponent = CollectedDataInChartsComponent;
+//# sourceMappingURL=collectedDataInCharts.component.js.map

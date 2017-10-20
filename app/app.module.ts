@@ -5,8 +5,6 @@ import {RouterModule} from "@angular/router";
 import {AppComponent} from "./app.component";
 import {WelcomeComponent} from "./common/home/welcome.component";
 import {NavComponent} from "./nav.component";
-import {LoginModule} from "./common/login/login.module";
-import {ProductModule} from "./products/product.module";
 import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
 import {HTCommonModule} from "./common/htCommon.module";
@@ -15,7 +13,7 @@ import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
 import {MessagesService} from "./common/messages/messages.service";
 import {FmModule} from "./fm/fm.module";
-import {NgxMyDatePickerModule} from "ngx-mydatepicker";
+import {CrawlerModule} from "./crwlr/crawler.module";
 
 @NgModule({
   imports: [
@@ -26,9 +24,8 @@ import {NgxMyDatePickerModule} from "ngx-mydatepicker";
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       // {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
-    LoginModule,
-    ProductModule,
     FmModule,
+    CrawlerModule,
     HTCommonModule,
     ToasterModule,
     ModalModule.forRoot(),

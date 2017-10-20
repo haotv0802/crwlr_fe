@@ -10,28 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var ProductDetailGuard = /** @class */ (function () {
-    function ProductDetailGuard(_router) {
-        this._router = _router;
+var constant_1 = require("../common/constant");
+var HTTP_service_1 = require("../common/HTTP.service");
+var CollectedDataInChartsService = /** @class */ (function () {
+    function CollectedDataInChartsService(_httpService, _constants) {
+        this._httpService = _httpService;
+        this._constants = _constants;
     }
-    ProductDetailGuard.prototype.canActivate = function (route) {
-        var id = +route.url[1].path;
-        if (isNaN(id) || id < 1) {
-            alert('Invalid product Id');
-            // start a new navigation to redirect to list page
-            this._router.navigate(['/products']);
-            // abort current navigation
-            return false;
-        }
-        ;
-        return true;
-    };
-    ProductDetailGuard = __decorate([
+    CollectedDataInChartsService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [router_1.Router])
-    ], ProductDetailGuard);
-    return ProductDetailGuard;
+        __metadata("design:paramtypes", [HTTP_service_1.HTTPService,
+            constant_1.Constants])
+    ], CollectedDataInChartsService);
+    return CollectedDataInChartsService;
 }());
-exports.ProductDetailGuard = ProductDetailGuard;
-//# sourceMappingURL=product-guard.service.js.map
+exports.CollectedDataInChartsService = CollectedDataInChartsService;
+//# sourceMappingURL=collectedDataInCharts.service.js.map
