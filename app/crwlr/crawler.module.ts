@@ -7,6 +7,7 @@ import {CollectedDataInChartsComponent} from "./collectedDataInCharts.component"
 import {CollectedDataService} from "./collectedData.service";
 import {CollectedDataInChartsService} from "./collectedDataInCharts.service";
 import {HTCommonModule} from "../common/htCommon.module";
+import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {HTCommonModule} from "../common/htCommon.module";
     ]),
     CommonModule,
     Ng2SmartTableModule,
-    HTCommonModule
+    HTCommonModule,
+    ChartsModule
   ],
   declarations: [
     CollectedDataComponent,

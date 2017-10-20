@@ -3,7 +3,19 @@
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>
-
+    <div>
+        <div style="display: block">
+            <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <button (click)="randomize()">Update</button>
+    </div>
     <modal (modalOutput)="getData($event)">
     </modal>
 </div>

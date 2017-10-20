@@ -35,7 +35,8 @@
       // other libraries
       'rxjs': 'npm:rxjs',
       'ngx-mydatepicker': 'npm:ngx-mydatepicker/bundles/ngx-mydatepicker.umd.min.js',
-      'ng2-charts': 'npm:ng2-charts/bundles/ng2-charts.umd.js'
+      'ng2-charts': 'npm:ng2-charts/bundles/ng2-charts.umd.js',
+      'chart.js': 'npm:chart.js/dist/Chart.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

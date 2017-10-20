@@ -21,7 +21,6 @@ var angular2_modal_1 = require("angular2-modal");
 var bootstrap_1 = require("angular2-modal/plugins/bootstrap");
 var fm_module_1 = require("./fm/fm.module");
 var crawler_module_1 = require("./crwlr/crawler.module");
-var ng2_charts_1 = require("ng2-charts");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -39,8 +38,7 @@ var AppModule = /** @class */ (function () {
                 htCommon_module_1.HTCommonModule,
                 angular2_toaster_1.ToasterModule,
                 angular2_modal_1.ModalModule.forRoot(),
-                bootstrap_1.BootstrapModalModule,
-                ng2_charts_1.ChartsModule
+                bootstrap_1.BootstrapModalModule
             ],
             declarations: [
                 app_component_1.AppComponent,

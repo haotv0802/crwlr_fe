@@ -29,8 +29,7 @@ import {ChartsModule} from "ng2-charts";
     HTCommonModule,
     ToasterModule,
     ModalModule.forRoot(),
-    BootstrapModalModule,
-    ChartsModule
+    BootstrapModalModule
   ],
   declarations: [
     AppComponent,

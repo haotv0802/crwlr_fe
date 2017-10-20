@@ -15,6 +15,7 @@ var collectedDataInCharts_component_1 = require("./collectedDataInCharts.compone
 var collectedData_service_1 = require("./collectedData.service");
 var collectedDataInCharts_service_1 = require("./collectedDataInCharts.service");
 var htCommon_module_1 = require("../common/htCommon.module");
+var ng2_charts_1 = require("ng2-charts");
 var CrawlerModule = /** @class */ (function () {
     function CrawlerModule() {
     }
@@ -27,7 +28,8 @@ var CrawlerModule = /** @class */ (function () {
                 ]),
                 common_1.CommonModule,
                 ng2_smart_table_1.Ng2SmartTableModule,
-                htCommon_module_1.HTCommonModule
+                htCommon_module_1.HTCommonModule,
+                ng2_charts_1.ChartsModule
             ],
             declarations: [
                 collectedData_component_1.CollectedDataComponent,
