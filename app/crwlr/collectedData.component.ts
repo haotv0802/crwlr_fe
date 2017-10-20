@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {CollectedDataService} from "./collectedData.service";
 import {VendorProductPresenter} from "./vendorProductPresenter";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   moduleId: module.id,
@@ -9,6 +10,7 @@ import {VendorProductPresenter} from "./vendorProductPresenter";
 })
 export class CollectedDataComponent implements OnInit {
   pageTitle: string;
+  loaderOpen: boolean = true;
   collectedData: VendorProductPresenter[];
   settings = {
     columns: {
@@ -55,7 +57,7 @@ export class CollectedDataComponent implements OnInit {
     },
     pager : {
       display : true,
-      perPage: 10
+      perPage: 15
     }
   };
 
@@ -70,6 +72,13 @@ export class CollectedDataComponent implements OnInit {
     this._collectedDataService.getCollectedData().subscribe(
       (data) => {
         this.collectedData = data;
+        let timer = Observable.interval(1000);
+        timer.subscribe(
+          () => {
+            this.loaderOpen = false;
+          }
+        );
+
       }, (error) => {
         console.log(error);
       }

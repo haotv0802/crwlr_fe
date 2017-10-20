@@ -12,10 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var collectedData_service_1 = require("./collectedData.service");
+var Observable_1 = require("rxjs/Observable");
 var CollectedDataComponent = /** @class */ (function () {
     function CollectedDataComponent(_router, _collectedDataService) {
         this._router = _router;
         this._collectedDataService = _collectedDataService;
+        this.loaderOpen = true;
         this.settings = {
             columns: {
                 name: {
@@ -61,7 +63,7 @@ var CollectedDataComponent = /** @class */ (function () {
             },
             pager: {
                 display: true,
-                perPage: 10
+                perPage: 15
             }
         };
         this.pageTitle = 'Collected Data';
@@ -70,6 +72,10 @@ var CollectedDataComponent = /** @class */ (function () {
         var _this = this;
         this._collectedDataService.getCollectedData().subscribe(function (data) {
             _this.collectedData = data;
+            var timer = Observable_1.Observable.interval(1000);
+            timer.subscribe(function () {
+                _this.loaderOpen = false;
+            });
         }, function (error) {
             console.log(error);
         });
