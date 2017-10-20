@@ -11,7 +11,6 @@ import {HTCommonModule} from "./common/htCommon.module";
 import {ToasterModule} from "angular2-toaster";
 import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
-import {MessagesService} from "./common/messages/messages.service";
 import {FmModule} from "./fm/fm.module";
 import {CrawlerModule} from "./crwlr/crawler.module";
 
@@ -39,7 +38,6 @@ import {CrawlerModule} from "./crwlr/crawler.module";
   ],
   providers: [
     Constants,
-    MessagesService,
     HTTPService
   ],
   bootstrap: [AppComponent]

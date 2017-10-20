@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {Constants} from './common/constant';
 
 @Component({
-  selector: 'ht-nav',
+  selector: 'crwlr-nav',
   moduleId: module.id,
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css']

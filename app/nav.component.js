@@ -32,7 +32,7 @@ var NavComponent = /** @class */ (function () {
     };
     NavComponent = __decorate([
         core_1.Component({
-            selector: 'ht-nav',
+            selector: 'crwlr-nav',
             moduleId: module.id,
             templateUrl: 'nav.component.html',
             styleUrls: ['nav.component.css']

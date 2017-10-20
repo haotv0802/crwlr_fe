@@ -5,7 +5,6 @@ import {ModalComponent} from "./modal/modal.component";
 import {CommonModule} from "@angular/common";
 import {LoaderModalComponent} from "./modal/loaderModal/loader.modal.component";
 import {LoaderComponent} from "./loader/loader.component";
-import {MessagesService} from "./messages/messages.service";
 import {NgxMyDatePickerModule} from "ngx-mydatepicker";
 
 @NgModule({
