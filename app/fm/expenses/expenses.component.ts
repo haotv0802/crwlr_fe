@@ -7,7 +7,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PaymentMethod} from "./paymentMethod";
 import {Observable} from "rxjs/Rx";
 import {ExpensesDetailsPresenter} from "./expensesDetailsPresenter";
-import {EventExpenseService} from "./eventExpenses/eventExpense.service";
 import {IMyDateModel, INgxMyDpOptions} from "ngx-mydatepicker";
 
 @Component({
@@ -32,7 +31,6 @@ export class ExpensesComponent implements OnInit {
 
   constructor(
     private _expensesService: ExpensesService,
-    private _eventExpenseService: EventExpenseService,
     private _router: Router,
     private fb: FormBuilder,
   ) {
@@ -44,11 +42,9 @@ export class ExpensesComponent implements OnInit {
   ngOnInit(): void {
     Observable.forkJoin(
       this._expensesService.getExpenses(),
-      this._expensesService.getPaymentMethods()
     ).subscribe(
       (data) => {
         this.expensesDetails = data[0];
-        this.paymentMethods = data[1];
         this.expenseForm = this.fb.group({
           amount: ['', [Validators.required]],
           date: [new Date()],
@@ -89,12 +85,7 @@ export class ExpensesComponent implements OnInit {
   }
 
   getPaymentMethods(): void {
-    this._expensesService.getPaymentMethods().subscribe(
-      (paymentMethods) => {
-        this.paymentMethods = paymentMethods;
-        console.log(this.paymentMethods);
-      }
-    );
+
   }
 
   getExpensesDetails(): void {
@@ -215,7 +206,6 @@ export class ExpensesComponent implements OnInit {
     this.expenseEdit.forPerson = this.expenseForm.get("forPerson").value;
     this.expenseEdit.cardId = this.expenseForm.get("paymentMethod").value;
     this.expenseEdit.anEvent = true;
-    this._eventExpenseService.expenseCreation = this.expenseEdit;
     this._router.navigate(["expenses/-1"]);
   }
 

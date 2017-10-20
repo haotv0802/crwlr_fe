@@ -6,15 +6,11 @@ import {HTCommonModule} from "../../common/htCommon.module";
 import {ExpensesComponent} from "./expenses.component";
 import {ExpensesService} from "./expenses.service";
 import {ReactiveFormsModule} from "@angular/forms";
-import {EventExpenseComponent} from "./eventExpenses/eventExpense.component";
-import {EventExpenseGuard} from "./eventExpenses/eventExpense-guard.service";
-import {EventExpenseService} from "./eventExpenses/eventExpense.service";
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {path: 'expenses', component: ExpensesComponent},
-      {path: 'expenses/:expenseId', canActivate: [EventExpenseGuard], component: EventExpenseComponent}
     ]),
     CommonModule,
     Ng2SmartTableModule,
@@ -22,13 +18,10 @@ import {EventExpenseService} from "./eventExpenses/eventExpense.service";
     ReactiveFormsModule
   ],
   declarations: [
-    ExpensesComponent,
-    EventExpenseComponent
+    ExpensesComponent
   ],
   providers: [
-    ExpensesService,
-    EventExpenseService,
-    EventExpenseGuard
+    ExpensesService
   ]
 })
 export class ExpensesModule {

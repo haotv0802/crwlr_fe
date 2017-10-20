@@ -16,11 +16,9 @@ var expense_1 = require("./expense");
 var expenses_service_1 = require("./expenses.service");
 var forms_1 = require("@angular/forms");
 var Rx_1 = require("rxjs/Rx");
-var eventExpense_service_1 = require("./eventExpenses/eventExpense.service");
 var ExpensesComponent = /** @class */ (function () {
-    function ExpensesComponent(_expensesService, _eventExpenseService, _router, fb) {
+    function ExpensesComponent(_expensesService, _router, fb) {
         this._expensesService = _expensesService;
-        this._eventExpenseService = _eventExpenseService;
         this._router = _router;
         this.fb = fb;
         this.loaderOpen = true;
@@ -38,9 +36,8 @@ var ExpensesComponent = /** @class */ (function () {
     };
     ExpensesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        Rx_1.Observable.forkJoin(this._expensesService.getExpenses(), this._expensesService.getPaymentMethods()).subscribe(function (data) {
+        Rx_1.Observable.forkJoin(this._expensesService.getExpenses()).subscribe(function (data) {
             _this.expensesDetails = data[0];
-            _this.paymentMethods = data[1];
             _this.expenseForm = _this.fb.group({
                 amount: ['', [forms_1.Validators.required]],
                 date: [new Date()],
@@ -73,11 +70,6 @@ var ExpensesComponent = /** @class */ (function () {
         });
     };
     ExpensesComponent.prototype.getPaymentMethods = function () {
-        var _this = this;
-        this._expensesService.getPaymentMethods().subscribe(function (paymentMethods) {
-            _this.paymentMethods = paymentMethods;
-            console.log(_this.paymentMethods);
-        });
     };
     ExpensesComponent.prototype.getExpensesDetails = function () {
         var _this = this;
@@ -182,7 +174,6 @@ var ExpensesComponent = /** @class */ (function () {
         this.expenseEdit.forPerson = this.expenseForm.get("forPerson").value;
         this.expenseEdit.cardId = this.expenseForm.get("paymentMethod").value;
         this.expenseEdit.anEvent = true;
-        this._eventExpenseService.expenseCreation = this.expenseEdit;
         this._router.navigate(["expenses/-1"]);
     };
     ExpensesComponent.prototype.openEvent = function (id) {
@@ -218,7 +209,6 @@ var ExpensesComponent = /** @class */ (function () {
             templateUrl: 'expenses.component.html'
         }),
         __metadata("design:paramtypes", [expenses_service_1.ExpensesService,
-            eventExpense_service_1.EventExpenseService,
             router_1.Router,
             forms_1.FormBuilder])
     ], ExpensesComponent);

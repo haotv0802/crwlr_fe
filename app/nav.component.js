@@ -10,26 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var constant_1 = require("./common/constant");
 var NavComponent = /** @class */ (function () {
-    // public authority: string;
-    function NavComponent(_router, _constants) {
-        this._router = _router;
-        this._constants = _constants;
-        // this.authority = sessionStorage.getItem("authority");
-        // console.log("Authority: " + this.authority);
+    function NavComponent() {
     }
-    NavComponent.prototype.authority = function () {
-        // console.log("nav - get session storage: " + sessionStorage.getItem("authority"));
-        return sessionStorage.getItem(this._constants.AUTHORITY);
-    };
-    NavComponent.prototype.logout = function () {
-        sessionStorage.setItem(this._constants.AUTHORITY, null);
-        sessionStorage.setItem(this._constants.AUTH_TOKEN, null);
-        this._router.navigate(["welcome"]);
-        return false;
-    };
     NavComponent = __decorate([
         core_1.Component({
             selector: 'crwlr-nav',
@@ -37,7 +20,7 @@ var NavComponent = /** @class */ (function () {
             templateUrl: 'nav.component.html',
             styleUrls: ['nav.component.css']
         }),
-        __metadata("design:paramtypes", [router_1.Router, constant_1.Constants])
+        __metadata("design:paramtypes", [])
     ], NavComponent);
     return NavComponent;
 }());

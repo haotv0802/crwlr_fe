@@ -4,6 +4,8 @@
         {{pageTitle}}
     </div>
 
+    <ng2-smart-table [settings]="settings" [source]="collectedData"></ng2-smart-table>
+
     <modal (modalOutput)="getData($event)">
     </modal>
 </div>

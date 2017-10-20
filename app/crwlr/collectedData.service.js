@@ -17,6 +17,10 @@ var CollectedDataService = /** @class */ (function () {
         this._httpService = _httpService;
         this._constants = _constants;
     }
+    CollectedDataService.prototype.getCollectedData = function () {
+        return this._httpService.get(this._constants.CRAWLER_COLLECTED_DATA)
+            .map(function (res) { return res.json(); });
+    };
     CollectedDataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [HTTP_service_1.HTTPService,

@@ -14,9 +14,6 @@ var htCommon_module_1 = require("../../common/htCommon.module");
 var expenses_component_1 = require("./expenses.component");
 var expenses_service_1 = require("./expenses.service");
 var forms_1 = require("@angular/forms");
-var eventExpense_component_1 = require("./eventExpenses/eventExpense.component");
-var eventExpense_guard_service_1 = require("./eventExpenses/eventExpense-guard.service");
-var eventExpense_service_1 = require("./eventExpenses/eventExpense.service");
 var ExpensesModule = /** @class */ (function () {
     function ExpensesModule() {
     }
@@ -25,7 +22,6 @@ var ExpensesModule = /** @class */ (function () {
             imports: [
                 router_1.RouterModule.forChild([
                     { path: 'expenses', component: expenses_component_1.ExpensesComponent },
-                    { path: 'expenses/:expenseId', canActivate: [eventExpense_guard_service_1.EventExpenseGuard], component: eventExpense_component_1.EventExpenseComponent }
                 ]),
                 common_1.CommonModule,
                 ng2_smart_table_1.Ng2SmartTableModule,
@@ -33,13 +29,10 @@ var ExpensesModule = /** @class */ (function () {
                 forms_1.ReactiveFormsModule
             ],
             declarations: [
-                expenses_component_1.ExpensesComponent,
-                eventExpense_component_1.EventExpenseComponent
+                expenses_component_1.ExpensesComponent
             ],
             providers: [
-                expenses_service_1.ExpensesService,
-                eventExpense_service_1.EventExpenseService,
-                eventExpense_guard_service_1.EventExpenseGuard
+                expenses_service_1.ExpensesService
             ]
         })
     ], ExpensesModule);

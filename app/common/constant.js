@@ -9,16 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Constants = /** @class */ (function () {
     function Constants() {
-        this.LANGUAGE = "en";
-        this.HOST = 'http://localhost:8880/fm-be/svc';
-        this.LOGIN_SERVICE_URL = this.HOST + '/login';
+        this.HOST = 'http://localhost:8888/crwlr_be/svc';
         // Toaster types
         this.TOASTER_SUCCESS = "success";
         this.TOASTER_ERROR = "error";
-        // Messages services
-        this.COMMON_MESSAGES_SERVICE_URL = this.HOST + "/messages";
-        // public readonly ADMIN_MESSAGES_SERVICE_URL = this.HOST + "/admin/messages";
-        // public readonly CUSTOMER_MESSAGES_SERVICE_URL = this.HOST + "/customer/messages";
         // HTTP Status
         this.HTTP_STATUS_OK = 200;
         this.HTTP_STATUS_NO_CONTENT = 204;
@@ -28,16 +22,8 @@ var Constants = /** @class */ (function () {
         this.EXPENSES_SERVICE_URL = this.HOST + '/expenses';
         this.EXPENSES_DETAILS_SERVICE_URL = this.HOST + '/expensesDetails';
         this.EXPENSES_PREVIOUS_SERVICE_URL = this.HOST + '/previousExpensesDetails';
-        //  Event Expenses
-        this.EVENT_EXPENSES_SERVICE_URL = this.HOST + '/eventExpenses';
-        // Payment methods || Cards information
-        this.PAYMENT_METHODS_SERVICE_URL = this.HOST + '/paymentMethods';
-        // Constants
-        this.X_AUTH_TOKEN_HEADER = "X-AUTH-TOKEN";
-        this.AUTH_TOKEN = "AUTH_TOKEN";
-        this.AUTHORITY = "AUTHORITY";
-        this.AUTHORITY_ADMIN = "ADMIN";
-        this.AUTHORITY_CUSTOMER = "CUSTOMER";
+        //  Expenses
+        this.CRAWLER_COLLECTED_DATA = this.HOST + '/crawler/crawledData';
         // Names of Components
         this.WELCOME_URL = 'welcome';
     }

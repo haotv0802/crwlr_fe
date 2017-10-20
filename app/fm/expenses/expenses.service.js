@@ -34,10 +34,6 @@ var ExpensesService = /** @class */ (function () {
         return this._httpService.get(this._constants.EXPENSES_SERVICE_URL)
             .map(function (res) { return res.json(); });
     };
-    ExpensesService.prototype.getPaymentMethods = function () {
-        return this._httpService.get(this._constants.PAYMENT_METHODS_SERVICE_URL)
-            .map(function (res) { return res.json(); });
-    };
     ExpensesService.prototype.updateExpenseAmount = function (expenseId, amount) {
         return this._httpService.get(this._constants.EXPENSES_SERVICE_URL + ("/" + expenseId + "/" + amount + "/updateAmount"))
             .map(function (res) {
