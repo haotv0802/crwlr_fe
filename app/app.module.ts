@@ -13,6 +13,7 @@ import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
 import {FmModule} from "./fm/fm.module";
 import {CrawlerModule} from "./crwlr/crawler.module";
+import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   imports: [
@@ -28,8 +29,8 @@ import {CrawlerModule} from "./crwlr/crawler.module";
     HTCommonModule,
     ToasterModule,
     ModalModule.forRoot(),
-    BootstrapModalModule
-
+    BootstrapModalModule,
+    ChartsModule
   ],
   declarations: [
     AppComponent,

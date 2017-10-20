@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
+import Chart from 'chart.js';
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,6 @@ export class CollectedDataInChartsComponent implements OnInit {
     this.pageTitle = 'Collected Data in Charts';
   }
   ngOnInit(): void {
-
   }
 
 }
