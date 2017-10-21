@@ -29,4 +29,4 @@ var CrawledDataService = /** @class */ (function () {
     return CrawledDataService;
 }());
 exports.CrawledDataService = CrawledDataService;
-//# sourceMappingURL=collectedData.service.js.map
+//# sourceMappingURL=crawledData.service.js.map

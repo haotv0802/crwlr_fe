@@ -11,11 +11,11 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var ng2_smart_table_1 = require("ng2-smart-table");
 var crawledData_component_1 = require("./crawledData.component");
-var collectedDataInCharts_component_1 = require("./collectedDataInCharts.component");
-var collectedData_service_1 = require("./collectedData.service");
-var collectedDataInCharts_service_1 = require("./collectedDataInCharts.service");
 var htCommon_module_1 = require("../common/htCommon.module");
 var ng2_charts_1 = require("ng2-charts");
+var sellerInChart_component_1 = require("./sellerInChart.component");
+var crawledData_service_1 = require("./crawledData.service");
+var sellerInChart_service_1 = require("./sellerInChart.service");
 var CrawlerModule = /** @class */ (function () {
     function CrawlerModule() {
     }
@@ -24,7 +24,7 @@ var CrawlerModule = /** @class */ (function () {
             imports: [
                 router_1.RouterModule.forChild([
                     { path: 'collectedData', component: crawledData_component_1.CrawledDataComponent },
-                    { path: 'collectedDataInCharts', component: collectedDataInCharts_component_1.CollectedDataInChartsComponent }
+                    { path: 'collectedDataInCharts', component: sellerInChart_component_1.SellerInChartComponent }
                 ]),
                 common_1.CommonModule,
                 ng2_smart_table_1.Ng2SmartTableModule,
@@ -33,11 +33,11 @@ var CrawlerModule = /** @class */ (function () {
             ],
             declarations: [
                 crawledData_component_1.CrawledDataComponent,
-                collectedDataInCharts_component_1.CollectedDataInChartsComponent
+                sellerInChart_component_1.SellerInChartComponent
             ],
             providers: [
-                collectedData_service_1.CrawledDataService,
-                collectedDataInCharts_service_1.CollectedDataInChartsService
+                crawledData_service_1.CrawledDataService,
+                sellerInChart_service_1.SellerInChartService
             ]
         })
     ], CrawlerModule);

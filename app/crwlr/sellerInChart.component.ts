@@ -3,9 +3,9 @@ import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'collectedDataInCharts.component.html'
+  templateUrl: 'sellerInChart.component.html'
 })
-export class CollectedDataInChartsComponent implements OnInit {
+export class SellerInChartComponent implements OnInit {
   pageTitle: string;
   public barChartOptions: any = {
     scaleShowVerticalLines: false,

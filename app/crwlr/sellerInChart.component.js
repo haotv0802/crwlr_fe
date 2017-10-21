@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var CollectedDataInChartsComponent = /** @class */ (function () {
-    function CollectedDataInChartsComponent(_router) {
+var SellerInChartComponent = /** @class */ (function () {
+    function SellerInChartComponent(_router) {
         this._router = _router;
         this.barChartOptions = {
             scaleShowVerticalLines: false,
@@ -29,13 +29,13 @@ var CollectedDataInChartsComponent = /** @class */ (function () {
         this.pageTitle = 'Collected Data in Charts';
     }
     // events
-    CollectedDataInChartsComponent.prototype.chartClicked = function (e) {
+    SellerInChartComponent.prototype.chartClicked = function (e) {
         console.log(e);
     };
-    CollectedDataInChartsComponent.prototype.chartHovered = function (e) {
+    SellerInChartComponent.prototype.chartHovered = function (e) {
         console.log(e);
     };
-    CollectedDataInChartsComponent.prototype.randomize = function () {
+    SellerInChartComponent.prototype.randomize = function () {
         // Only Change 3 values
         var data = [
             Math.round(Math.random() * 100),
@@ -56,16 +56,16 @@ var CollectedDataInChartsComponent = /** @class */ (function () {
          * assign it;
          */
     };
-    CollectedDataInChartsComponent.prototype.ngOnInit = function () {
+    SellerInChartComponent.prototype.ngOnInit = function () {
     };
-    CollectedDataInChartsComponent = __decorate([
+    SellerInChartComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: 'collectedDataInCharts.component.html'
+            templateUrl: 'sellerInChart.component.html'
         }),
         __metadata("design:paramtypes", [router_1.Router])
-    ], CollectedDataInChartsComponent);
-    return CollectedDataInChartsComponent;
+    ], SellerInChartComponent);
+    return SellerInChartComponent;
 }());
-exports.CollectedDataInChartsComponent = CollectedDataInChartsComponent;
-//# sourceMappingURL=collectedDataInCharts.component.js.map
+exports.SellerInChartComponent = SellerInChartComponent;
+//# sourceMappingURL=sellerInChart.component.js.map

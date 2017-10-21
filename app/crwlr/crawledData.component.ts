@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {CrawledDataService} from "./collectedData.service";
 import {VendorProductPresenter} from "./vendorProductPresenter";
 import {Observable} from "rxjs/Observable";
+import {CrawledDataService} from "./crawledData.service";
 
 @Component({
   moduleId: module.id,

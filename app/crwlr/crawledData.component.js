@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var collectedData_service_1 = require("./collectedData.service");
 var Observable_1 = require("rxjs/Observable");
+var crawledData_service_1 = require("./crawledData.service");
 var CrawledDataComponent = /** @class */ (function () {
     function CrawledDataComponent(_router, _collectedDataService) {
         this._router = _router;
@@ -111,7 +111,7 @@ var CrawledDataComponent = /** @class */ (function () {
             templateUrl: 'crawledData.component.html'
         }),
         __metadata("design:paramtypes", [router_1.Router,
-            collectedData_service_1.CrawledDataService])
+            crawledData_service_1.CrawledDataService])
     ], CrawledDataComponent);
     return CrawledDataComponent;
 }());

@@ -12,17 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var constant_1 = require("../common/constant");
 var HTTP_service_1 = require("../common/HTTP.service");
-var CollectedDataInChartsService = /** @class */ (function () {
-    function CollectedDataInChartsService(_httpService, _constants) {
+var SellerInChartService = /** @class */ (function () {
+    function SellerInChartService(_httpService, _constants) {
         this._httpService = _httpService;
         this._constants = _constants;
     }
-    CollectedDataInChartsService = __decorate([
+    SellerInChartService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [HTTP_service_1.HTTPService,
             constant_1.Constants])
-    ], CollectedDataInChartsService);
-    return CollectedDataInChartsService;
+    ], SellerInChartService);
+    return SellerInChartService;
 }());
-exports.CollectedDataInChartsService = CollectedDataInChartsService;
-//# sourceMappingURL=collectedDataInCharts.service.js.map
+exports.SellerInChartService = SellerInChartService;
+//# sourceMappingURL=sellerInChart.service.js.map
