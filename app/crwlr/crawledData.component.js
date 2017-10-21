@@ -13,8 +13,8 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var collectedData_service_1 = require("./collectedData.service");
 var Observable_1 = require("rxjs/Observable");
-var CollectedDataComponent = /** @class */ (function () {
-    function CollectedDataComponent(_router, _collectedDataService) {
+var CrawledDataComponent = /** @class */ (function () {
+    function CrawledDataComponent(_router, _collectedDataService) {
         this._router = _router;
         this._collectedDataService = _collectedDataService;
         this.loaderOpen = true;
@@ -93,7 +93,7 @@ var CollectedDataComponent = /** @class */ (function () {
         };
         this.pageTitle = 'Collected Data';
     }
-    CollectedDataComponent.prototype.ngOnInit = function () {
+    CrawledDataComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._collectedDataService.getCollectedData().subscribe(function (data) {
             _this.collectedData = data;
@@ -105,15 +105,15 @@ var CollectedDataComponent = /** @class */ (function () {
             console.log(error);
         });
     };
-    CollectedDataComponent = __decorate([
+    CrawledDataComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: 'collectedData.component.html'
+            templateUrl: 'crawledData.component.html'
         }),
         __metadata("design:paramtypes", [router_1.Router,
-            collectedData_service_1.CollectedDataService])
-    ], CollectedDataComponent);
-    return CollectedDataComponent;
+            collectedData_service_1.CrawledDataService])
+    ], CrawledDataComponent);
+    return CrawledDataComponent;
 }());
-exports.CollectedDataComponent = CollectedDataComponent;
-//# sourceMappingURL=collectedData.component.js.map
+exports.CrawledDataComponent = CrawledDataComponent;
+//# sourceMappingURL=crawledData.component.js.map

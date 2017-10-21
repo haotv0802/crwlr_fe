@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {CollectedDataService} from "./collectedData.service";
+import {CrawledDataService} from "./collectedData.service";
 import {VendorProductPresenter} from "./vendorProductPresenter";
 import {Observable} from "rxjs/Observable";
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'collectedData.component.html'
+  templateUrl: 'crawledData.component.html'
 })
-export class CollectedDataComponent implements OnInit {
+export class CrawledDataComponent implements OnInit {
   pageTitle: string;
   loaderOpen: boolean = true;
   collectedData: VendorProductPresenter[];
@@ -88,7 +88,7 @@ export class CollectedDataComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _collectedDataService: CollectedDataService
+    private _collectedDataService: CrawledDataService
   ) {
     this.pageTitle = 'Collected Data';
   }

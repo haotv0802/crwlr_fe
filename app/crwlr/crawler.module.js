@@ -10,7 +10,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var ng2_smart_table_1 = require("ng2-smart-table");
-var collectedData_component_1 = require("./collectedData.component");
+var crawledData_component_1 = require("./crawledData.component");
 var collectedDataInCharts_component_1 = require("./collectedDataInCharts.component");
 var collectedData_service_1 = require("./collectedData.service");
 var collectedDataInCharts_service_1 = require("./collectedDataInCharts.service");
@@ -23,7 +23,7 @@ var CrawlerModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [
                 router_1.RouterModule.forChild([
-                    { path: 'collectedData', component: collectedData_component_1.CollectedDataComponent },
+                    { path: 'collectedData', component: crawledData_component_1.CrawledDataComponent },
                     { path: 'collectedDataInCharts', component: collectedDataInCharts_component_1.CollectedDataInChartsComponent }
                 ]),
                 common_1.CommonModule,
@@ -32,11 +32,11 @@ var CrawlerModule = /** @class */ (function () {
                 ng2_charts_1.ChartsModule
             ],
             declarations: [
-                collectedData_component_1.CollectedDataComponent,
+                crawledData_component_1.CrawledDataComponent,
                 collectedDataInCharts_component_1.CollectedDataInChartsComponent
             ],
             providers: [
-                collectedData_service_1.CollectedDataService,
+                collectedData_service_1.CrawledDataService,
                 collectedDataInCharts_service_1.CollectedDataInChartsService
             ]
         })

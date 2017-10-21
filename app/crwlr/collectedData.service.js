@@ -12,21 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var constant_1 = require("../common/constant");
 var HTTP_service_1 = require("../common/HTTP.service");
-var CollectedDataService = /** @class */ (function () {
-    function CollectedDataService(_httpService, _constants) {
+var CrawledDataService = /** @class */ (function () {
+    function CrawledDataService(_httpService, _constants) {
         this._httpService = _httpService;
         this._constants = _constants;
     }
-    CollectedDataService.prototype.getCollectedData = function () {
+    CrawledDataService.prototype.getCollectedData = function () {
         return this._httpService.get(this._constants.CRAWLER_COLLECTED_DATA)
             .map(function (res) { return res.json(); });
     };
-    CollectedDataService = __decorate([
+    CrawledDataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [HTTP_service_1.HTTPService,
             constant_1.Constants])
-    ], CollectedDataService);
-    return CollectedDataService;
+    ], CrawledDataService);
+    return CrawledDataService;
 }());
-exports.CollectedDataService = CollectedDataService;
+exports.CrawledDataService = CrawledDataService;
 //# sourceMappingURL=collectedData.service.js.map

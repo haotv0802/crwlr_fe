@@ -5,7 +5,7 @@ import {HTTPService} from "../common/HTTP.service";
 import {VendorProductPresenter} from "./vendorProductPresenter";
 
 @Injectable()
-export class CollectedDataService {
+export class CrawledDataService {
 
   constructor(
     private _httpService: HTTPService,

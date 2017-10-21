@@ -2,9 +2,9 @@ import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {Ng2SmartTableModule} from "ng2-smart-table";
-import {CollectedDataComponent} from "./collectedData.component";
+import {CrawledDataComponent} from "./crawledData.component";
 import {CollectedDataInChartsComponent} from "./collectedDataInCharts.component";
-import {CollectedDataService} from "./collectedData.service";
+import {CrawledDataService} from "./collectedData.service";
 import {CollectedDataInChartsService} from "./collectedDataInCharts.service";
 import {HTCommonModule} from "../common/htCommon.module";
 import {ChartsModule} from "ng2-charts";
@@ -12,7 +12,7 @@ import {ChartsModule} from "ng2-charts";
 @NgModule({
   imports: [
     RouterModule.forChild([
-      {path: 'collectedData', component: CollectedDataComponent},
+      {path: 'collectedData', component: CrawledDataComponent},
       {path: 'collectedDataInCharts', component: CollectedDataInChartsComponent}
     ]),
     CommonModule,
@@ -21,11 +21,11 @@ import {ChartsModule} from "ng2-charts";
     ChartsModule
   ],
   declarations: [
-    CollectedDataComponent,
+    CrawledDataComponent,
     CollectedDataInChartsComponent
   ],
   providers: [
-    CollectedDataService,
+    CrawledDataService,
     CollectedDataInChartsService
   ]
 })
