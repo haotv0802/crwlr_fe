@@ -30,8 +30,18 @@ export class CollectedDataComponent implements OnInit {
         width: '100px',
         filter: true
       },
+      vendorLocation: {
+        title: 'Location (Year)',
+        width: '70px',
+        filter: true
+      },
+      vendorShipOnTime: {
+        title: 'Ship on time',
+        width: '70px',
+        filter: true
+      },
       vendorTimeOnLazada: {
-        title: 'Time on Lazada (Year)',
+        title: 'Time on Lazada (Months)',
         width: '70px',
         filter: true
       },
@@ -42,6 +52,21 @@ export class CollectedDataComponent implements OnInit {
       },
       vendorSize: {
         title: 'Seller Size',
+        width: '50px',
+        filter: true
+      },
+      vendorPositive: {
+        title: 'Positive',
+        width: '50px',
+        filter: true
+      },
+      vendorNeutral: {
+        title: 'Neutral',
+        width: '50px',
+        filter: true
+      },
+      vendorNegative: {
+        title: 'Negative',
         width: '50px',
         filter: true
       }
@@ -57,7 +82,7 @@ export class CollectedDataComponent implements OnInit {
     },
     pager : {
       display : true,
-      perPage: 15
+      perPage: 10
     }
   };
 
