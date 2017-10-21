@@ -16,10 +16,16 @@ export class SellerInChartComponent implements OnInit {
     responsive: true
   };
   public barChartLabels: string[] = ['Time On Lazada (months)', 'Seller size', 'Ship on time'];
+  public barChartTimeOnLazadaLabel: string[] = ['Time On Lazada (months)'];
+  public barChartSellerSizeLabel: string[] = ['Seller size'];
+  public barChartShipOnTimeLabel: string[] = ['Ship on time'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
   public barChartData: any[];
+  public barChartTimeOnLazadaData: any[];
+  public barChartSellerSizeData: any[];
+  public barChartShipOnTimeData: any[];
 
   // events
   public chartClicked(e: any): void {
@@ -30,27 +36,6 @@ export class SellerInChartComponent implements OnInit {
     console.log(e);
   }
 
-  public randomize(): void {
-    // Only Change 3 values
-    let data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    let clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
-    /**
-     * (My guess), for Angular to recognize the change in the dataset
-     * it has to change the dataset variable directly,
-     * so one way around it, is to clone the data, change it and then
-     * assign it;
-     */
-  }
-
   constructor(private _sellerInChartService: SellerInChartService) {
     this.pageTitle = 'Collected Data in Charts';
   }
@@ -59,23 +44,33 @@ export class SellerInChartComponent implements OnInit {
     this._sellerInChartService.getAllVendors().subscribe(
       (data) => {
         this.vendors = data;
-        console.log(this.vendors);
         this.barChartData = [];
+        this.barChartTimeOnLazadaData = [];
+        this.barChartSellerSizeData = [];
+        this.barChartShipOnTimeData = [];
         for(let i = 0; i < this.vendors.length; i++) {
-          console.log(this.vendors[i]);
-          let json = {
+          let timeOneLazadaData = {
             data: [
-                this.vendors[i].timeOnLazada, this.vendors[i].size, this.vendors[i].shipOnTime
+              this.vendors[i].timeOnLazada
             ],
             label: this.vendors[i].name
           };
-          this.barChartData[i] = json;
+          let sellerSize = {
+            data: [
+              this.vendors[i].size
+            ],
+            label: this.vendors[i].name
+          };
+          let shipOnTimeData = {
+            data: [
+              this.vendors[i].shipOnTime
+            ],
+            label: this.vendors[i].name
+          };
+          this.barChartTimeOnLazadaData[i] = timeOneLazadaData;
+          this.barChartSellerSizeData[i] = sellerSize;
+          this.barChartShipOnTimeData[i] = shipOnTimeData;
         }
-        // this.barChartData = [
-        //   {data: [65, 59, 80], label: 'Series A'},
-        //   {data: [28, -28, 40], label: 'Series B'},
-        //   {data: [38, -8, 65], label: 'Series C'}
-        // ];
         let timer = Observable.interval(1000);
         timer.subscribe(
           () => {

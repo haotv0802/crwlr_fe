@@ -6,8 +6,28 @@
     <div>
         <div style="display: block">
             <canvas baseChart
-                    [datasets]="barChartData"
-                    [labels]="barChartLabels"
+                    [datasets]="barChartTimeOnLazadaData"
+                    [labels]="barChartTimeOnLazadaLabel"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <div style="display: block">
+            <canvas baseChart
+                    [datasets]="barChartSellerSizeData"
+                    [labels]="barChartSellerSizeLabel"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <div style="display: block">
+            <canvas baseChart
+                    [datasets]="barChartShipOnTimeData"
+                    [labels]="barChartShipOnTimeLabel"
                     [options]="barChartOptions"
                     [legend]="barChartLegend"
                     [chartType]="barChartType"
