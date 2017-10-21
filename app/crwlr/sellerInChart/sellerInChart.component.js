@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var sellerInChart_service_1 = require("./sellerInChart.service");
-var Observable_1 = require("rxjs/Observable");
 var SellerInChartComponent = /** @class */ (function () {
     function SellerInChartComponent(_sellerInChartService) {
         this._sellerInChartService = _sellerInChartService;
@@ -66,10 +65,13 @@ var SellerInChartComponent = /** @class */ (function () {
                 _this.barChartSellerSizeData[i] = sellerSize;
                 _this.barChartShipOnTimeData[i] = shipOnTimeData;
             }
-            var timer = Observable_1.Observable.interval(1000);
-            timer.subscribe(function () {
-                _this.loaderOpen = false;
-            });
+            _this.loaderOpen = false;
+            // let timer = Observable.interval(1000);
+            // timer.subscribe(
+            //   () => {
+            //     this.loaderOpen = false;
+            //   }
+            // );
         }, function (error) {
             console.log(error);
         });

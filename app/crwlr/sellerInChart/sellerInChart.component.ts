@@ -71,12 +71,13 @@ export class SellerInChartComponent implements OnInit {
           this.barChartSellerSizeData[i] = sellerSize;
           this.barChartShipOnTimeData[i] = shipOnTimeData;
         }
-        let timer = Observable.interval(1000);
-        timer.subscribe(
-          () => {
-            this.loaderOpen = false;
-          }
-        );
+        this.loaderOpen = false;
+        // let timer = Observable.interval(1000);
+        // timer.subscribe(
+        //   () => {
+        //     this.loaderOpen = false;
+        //   }
+        // );
 
       }, (error) => {
         console.log(error);

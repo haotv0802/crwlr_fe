@@ -20,7 +20,6 @@ var angular2_toaster_1 = require("angular2-toaster");
 var angular2_modal_1 = require("angular2-modal");
 var bootstrap_1 = require("angular2-modal/plugins/bootstrap");
 var crawler_module_1 = require("./crwlr/crawler.module");
-var expenses_module_1 = require("./fm/expenses/expenses.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -37,8 +36,7 @@ var AppModule = /** @class */ (function () {
                 htCommon_module_1.HTCommonModule,
                 angular2_toaster_1.ToasterModule,
                 angular2_modal_1.ModalModule.forRoot(),
-                bootstrap_1.BootstrapModalModule,
-                expenses_module_1.ExpensesModule
+                bootstrap_1.BootstrapModalModule
             ],
             declarations: [
                 app_component_1.AppComponent,

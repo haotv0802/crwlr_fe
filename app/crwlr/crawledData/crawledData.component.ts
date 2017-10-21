@@ -31,7 +31,7 @@ export class CrawledDataComponent implements OnInit {
         filter: true
       },
       vendorLocation: {
-        title: 'Location (Year)',
+        title: 'Location',
         width: '70px',
         filter: true
       },
@@ -97,12 +97,13 @@ export class CrawledDataComponent implements OnInit {
     this._crawledDataService.getCollectedData().subscribe(
       (data) => {
         this.collectedData = data;
-        let timer = Observable.interval(1000);
-        timer.subscribe(
-          () => {
-            this.loaderOpen = false;
-          }
-        );
+        this.loaderOpen = false;
+        // let timer = Observable.interval(1000);
+        // timer.subscribe(
+        //   () => {
+        //
+        //   }
+        // );
 
       }, (error) => {
         console.log(error);

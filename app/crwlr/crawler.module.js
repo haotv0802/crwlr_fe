@@ -24,7 +24,7 @@ var CrawlerModule = /** @class */ (function () {
             imports: [
                 router_1.RouterModule.forChild([
                     { path: 'collectedData', component: crawledData_component_1.CrawledDataComponent },
-                    { path: 'collectedDataInCharts', component: sellerInChart_component_1.SellerInChartComponent }
+                    { path: 'sellerInCharts', component: sellerInChart_component_1.SellerInChartComponent }
                 ]),
                 common_1.CommonModule,
                 ng2_smart_table_1.Ng2SmartTableModule,

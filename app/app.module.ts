@@ -12,7 +12,6 @@ import {ToasterModule} from "angular2-toaster";
 import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
 import {CrawlerModule} from "./crwlr/crawler.module";
-import {ExpensesModule} from "./fm/expenses/expenses.module";
 
 @NgModule({
   imports: [
@@ -27,8 +26,7 @@ import {ExpensesModule} from "./fm/expenses/expenses.module";
     HTCommonModule,
     ToasterModule,
     ModalModule.forRoot(),
-    BootstrapModalModule,
-    ExpensesModule
+    BootstrapModalModule
   ],
   declarations: [
     AppComponent,

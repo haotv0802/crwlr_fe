@@ -13,7 +13,7 @@ import {CrawledDataService} from "./crawledData/crawledData.service";
   imports: [
     RouterModule.forChild([
       {path: 'collectedData', component: CrawledDataComponent},
-      {path: 'collectedDataInCharts', component: SellerInChartComponent}
+      {path: 'sellerInCharts', component: SellerInChartComponent}
     ]),
     CommonModule,
     Ng2SmartTableModule,

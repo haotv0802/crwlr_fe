@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var Observable_1 = require("rxjs/Observable");
 var crawledData_service_1 = require("./crawledData.service");
 var CrawledDataComponent = /** @class */ (function () {
     function CrawledDataComponent(_router, _crawledDataService) {
@@ -37,7 +36,7 @@ var CrawledDataComponent = /** @class */ (function () {
                     filter: true
                 },
                 vendorLocation: {
-                    title: 'Location (Year)',
+                    title: 'Location',
                     width: '70px',
                     filter: true
                 },
@@ -97,10 +96,13 @@ var CrawledDataComponent = /** @class */ (function () {
         var _this = this;
         this._crawledDataService.getCollectedData().subscribe(function (data) {
             _this.collectedData = data;
-            var timer = Observable_1.Observable.interval(1000);
-            timer.subscribe(function () {
-                _this.loaderOpen = false;
-            });
+            _this.loaderOpen = false;
+            // let timer = Observable.interval(1000);
+            // timer.subscribe(
+            //   () => {
+            //
+            //   }
+            // );
         }, function (error) {
             console.log(error);
         });
