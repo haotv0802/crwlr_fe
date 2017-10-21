@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {Constants} from "../common/constant";
-import {HTTPService} from "../common/HTTP.service";
 import {VendorProductPresenter} from "./vendorProductPresenter";
+import {HTTPService} from "../../common/HTTP.service";
+import {Constants} from "../../common/constant";
 
 @Injectable()
 export class CrawledDataService {

@@ -10,12 +10,12 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var ng2_smart_table_1 = require("ng2-smart-table");
-var crawledData_component_1 = require("./crawledData.component");
 var htCommon_module_1 = require("../common/htCommon.module");
 var ng2_charts_1 = require("ng2-charts");
-var sellerInChart_component_1 = require("./sellerInChart.component");
-var crawledData_service_1 = require("./crawledData.service");
-var sellerInChart_service_1 = require("./sellerInChart.service");
+var sellerInChart_component_1 = require("./sellerInChart/sellerInChart.component");
+var sellerInChart_service_1 = require("./sellerInChart/sellerInChart.service");
+var crawledData_component_1 = require("./crawledData/crawledData.component");
+var crawledData_service_1 = require("./crawledData/crawledData.service");
 var CrawlerModule = /** @class */ (function () {
     function CrawlerModule() {
     }

@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var constant_1 = require("../common/constant");
-var HTTP_service_1 = require("../common/HTTP.service");
+var constant_1 = require("../../common/constant");
+var HTTP_service_1 = require("../../common/HTTP.service");
 var SellerInChartService = /** @class */ (function () {
     function SellerInChartService(_httpService, _constants) {
         this._httpService = _httpService;
