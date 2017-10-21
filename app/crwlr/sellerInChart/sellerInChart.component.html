@@ -1,7 +1,7 @@
 <loader-modal [opening]="loaderOpen" (loaderClicked)='onLoaderClicked($event)'></loader-modal>
-<div class='panel panel-info' *ngIf="!loaderOpen" style="width: 1150px; height: 600px">
+<div class='panel panel-info' *ngIf="!loaderOpen" style="width: 1150px; height: auto">
     <div class='panel-heading' style='font-size:large'>
-        {{pageTitle}}
+        Time on lazada
     </div>
     <div>
         <div style="display: block">
@@ -14,6 +14,13 @@
                     (chartHover)="chartHovered($event)"
                     (chartClick)="chartClicked($event)"></canvas>
         </div>
+    </div>
+    <br/>
+    <br/>
+    <div class='panel-heading' style='font-size:large'>
+        Seller size
+    </div>
+    <div>
         <div style="display: block">
             <canvas baseChart
                     [datasets]="barChartSellerSizeData"
@@ -24,6 +31,13 @@
                     (chartHover)="chartHovered($event)"
                     (chartClick)="chartClicked($event)"></canvas>
         </div>
+    </div>
+    <br/>
+    <br/>
+    <div class='panel-heading' style='font-size:large'>
+        Ship on time
+    </div>
+    <div>
         <div style="display: block">
             <canvas baseChart
                     [datasets]="barChartShipOnTimeData"
@@ -34,7 +48,6 @@
                     (chartHover)="chartHovered($event)"
                     (chartClick)="chartClicked($event)"></canvas>
         </div>
-        <button (click)="randomize()">Update</button>
     </div>
     <modal (modalOutput)="getData($event)">
     </modal>
