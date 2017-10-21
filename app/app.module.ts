@@ -13,7 +13,6 @@ import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
 import {FmModule} from "./fm/fm.module";
 import {CrawlerModule} from "./crwlr/crawler.module";
-import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   imports: [
