@@ -17,6 +17,10 @@ var SellerInChartService = /** @class */ (function () {
         this._httpService = _httpService;
         this._constants = _constants;
     }
+    SellerInChartService.prototype.getAllVendors = function () {
+        return this._httpService.get(this._constants.CRAWLER_VENDORS)
+            .map(function (res) { return res.json(); });
+    };
     SellerInChartService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [HTTP_service_1.HTTPService,

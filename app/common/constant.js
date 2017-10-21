@@ -24,6 +24,7 @@ var Constants = /** @class */ (function () {
         this.EXPENSES_PREVIOUS_SERVICE_URL = this.HOST + '/previousExpensesDetails';
         //  Expenses
         this.CRAWLER_COLLECTED_DATA = this.HOST + '/crawler/crawledData';
+        this.CRAWLER_VENDORS = this.HOST + '/crawler/vendors';
         // Names of Components
         this.WELCOME_URL = 'welcome';
     }

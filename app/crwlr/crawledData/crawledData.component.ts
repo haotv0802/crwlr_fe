@@ -88,13 +88,13 @@ export class CrawledDataComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _collectedDataService: CrawledDataService
+    private _crawledDataService: CrawledDataService
   ) {
     this.pageTitle = 'Collected Data';
   }
 
   ngOnInit(): void {
-    this._collectedDataService.getCollectedData().subscribe(
+    this._crawledDataService.getCollectedData().subscribe(
       (data) => {
         this.collectedData = data;
         let timer = Observable.interval(1000);

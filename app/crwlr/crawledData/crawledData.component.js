@@ -14,9 +14,9 @@ var router_1 = require("@angular/router");
 var Observable_1 = require("rxjs/Observable");
 var crawledData_service_1 = require("./crawledData.service");
 var CrawledDataComponent = /** @class */ (function () {
-    function CrawledDataComponent(_router, _collectedDataService) {
+    function CrawledDataComponent(_router, _crawledDataService) {
         this._router = _router;
-        this._collectedDataService = _collectedDataService;
+        this._crawledDataService = _crawledDataService;
         this.loaderOpen = true;
         this.settings = {
             columns: {
@@ -95,7 +95,7 @@ var CrawledDataComponent = /** @class */ (function () {
     }
     CrawledDataComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._collectedDataService.getCollectedData().subscribe(function (data) {
+        this._crawledDataService.getCollectedData().subscribe(function (data) {
             _this.collectedData = data;
             var timer = Observable_1.Observable.interval(1000);
             timer.subscribe(function () {

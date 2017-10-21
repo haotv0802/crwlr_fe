@@ -10,22 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+var sellerInChart_service_1 = require("./sellerInChart.service");
+var Observable_1 = require("rxjs/Observable");
 var SellerInChartComponent = /** @class */ (function () {
-    function SellerInChartComponent(_router) {
-        this._router = _router;
+    function SellerInChartComponent(_sellerInChartService) {
+        this._sellerInChartService = _sellerInChartService;
+        this.loaderOpen = true;
         this.barChartOptions = {
             scaleShowVerticalLines: false,
             responsive: true
         };
-        this.barChartLabels = ['Time On Lazada', 'Seller size', 'Ship on time'];
+        this.barChartLabels = ['Time On Lazada (months)', 'Seller size', 'Ship on time'];
         this.barChartType = 'bar';
         this.barChartLegend = true;
-        this.barChartData = [
-            { data: [65, 59, 80], label: 'Series A' },
-            { data: [28, -28, 40], label: 'Series B' },
-            { data: [38, -8, 65], label: 'Series C' }
-        ];
         this.pageTitle = 'Collected Data in Charts';
     }
     // events
@@ -57,13 +54,40 @@ var SellerInChartComponent = /** @class */ (function () {
          */
     };
     SellerInChartComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._sellerInChartService.getAllVendors().subscribe(function (data) {
+            _this.vendors = data;
+            console.log(_this.vendors);
+            _this.barChartData = [];
+            for (var i = 0; i < _this.vendors.length; i++) {
+                console.log(_this.vendors[i]);
+                var json = {
+                    data: [
+                        _this.vendors[i].timeOnLazada, _this.vendors[i].size, _this.vendors[i].shipOnTime
+                    ],
+                    label: _this.vendors[i].name
+                };
+                _this.barChartData[i] = json;
+            }
+            // this.barChartData = [
+            //   {data: [65, 59, 80], label: 'Series A'},
+            //   {data: [28, -28, 40], label: 'Series B'},
+            //   {data: [38, -8, 65], label: 'Series C'}
+            // ];
+            var timer = Observable_1.Observable.interval(1000);
+            timer.subscribe(function () {
+                _this.loaderOpen = false;
+            });
+        }, function (error) {
+            console.log(error);
+        });
     };
     SellerInChartComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'sellerInChart.component.html'
         }),
-        __metadata("design:paramtypes", [router_1.Router])
+        __metadata("design:paramtypes", [sellerInChart_service_1.SellerInChartService])
     ], SellerInChartComponent);
     return SellerInChartComponent;
 }());

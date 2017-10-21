@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
+import {SellerInChartService} from "./sellerInChart.service";
+import {Observable} from "rxjs/Observable";
+import {VendorPresenter} from "./vendorPresenter";
 
 @Component({
   moduleId: module.id,
@@ -7,19 +9,17 @@ import {Router} from "@angular/router";
 })
 export class SellerInChartComponent implements OnInit {
   pageTitle: string;
+  loaderOpen: boolean = true;
+  vendors: VendorPresenter[];
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['Time On Lazada', 'Seller size', 'Ship on time'];
+  public barChartLabels: string[] = ['Time On Lazada (months)', 'Seller size', 'Ship on time'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
-  public barChartData: any[] = [
-    {data: [65, 59, 80], label: 'Series A'},
-    {data: [28, -28, 40], label: 'Series B'},
-    {data: [38, -8, 65], label: 'Series C'}
-  ];
+  public barChartData: any[];
 
   // events
   public chartClicked(e: any): void {
@@ -51,11 +51,41 @@ export class SellerInChartComponent implements OnInit {
      */
   }
 
-  constructor(private _router: Router,) {
+  constructor(private _sellerInChartService: SellerInChartService) {
     this.pageTitle = 'Collected Data in Charts';
   }
 
   ngOnInit(): void {
-  }
+    this._sellerInChartService.getAllVendors().subscribe(
+      (data) => {
+        this.vendors = data;
+        console.log(this.vendors);
+        this.barChartData = [];
+        for(let i = 0; i < this.vendors.length; i++) {
+          console.log(this.vendors[i]);
+          let json = {
+            data: [
+                this.vendors[i].timeOnLazada, this.vendors[i].size, this.vendors[i].shipOnTime
+            ],
+            label: this.vendors[i].name
+          };
+          this.barChartData[i] = json;
+        }
+        // this.barChartData = [
+        //   {data: [65, 59, 80], label: 'Series A'},
+        //   {data: [28, -28, 40], label: 'Series B'},
+        //   {data: [38, -8, 65], label: 'Series C'}
+        // ];
+        let timer = Observable.interval(1000);
+        timer.subscribe(
+          () => {
+            this.loaderOpen = false;
+          }
+        );
 
+      }, (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

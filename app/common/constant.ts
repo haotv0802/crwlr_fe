@@ -22,6 +22,7 @@ export class Constants {
 
   //  Expenses
   public readonly CRAWLER_COLLECTED_DATA: string = this.HOST + '/crawler/crawledData';
+  public readonly CRAWLER_VENDORS: string = this.HOST + '/crawler/vendors';
 
   // Names of Components
   public readonly WELCOME_URL: string = 'welcome';
