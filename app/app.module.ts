@@ -11,8 +11,8 @@ import {HTCommonModule} from "./common/htCommon.module";
 import {ToasterModule} from "angular2-toaster";
 import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
-import {FmModule} from "./fm/fm.module";
 import {CrawlerModule} from "./crwlr/crawler.module";
+import {ExpensesModule} from "./fm/expenses/expenses.module";
 
 @NgModule({
   imports: [
@@ -23,12 +23,12 @@ import {CrawlerModule} from "./crwlr/crawler.module";
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       // {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
-    FmModule,
     CrawlerModule,
     HTCommonModule,
     ToasterModule,
     ModalModule.forRoot(),
-    BootstrapModalModule
+    BootstrapModalModule,
+    ExpensesModule
   ],
   declarations: [
     AppComponent,
