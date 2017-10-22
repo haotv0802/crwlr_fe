@@ -10,29 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var constant_1 = require("./constant");
 var Observable_1 = require("rxjs/Observable");
 var http_1 = require("@angular/http");
 var HTTPService = /** @class */ (function () {
-    function HTTPService(_http, _constants) {
+    function HTTPService(_http) {
         this._http = _http;
-        this._constants = _constants;
     }
-    HTTPService.prototype.post = function (url, data) {
-        var headers = new http_1.Headers();
-        headers.append("Content-Type", "application/json");
-        return this._http.post(url, data, { headers: headers });
-    };
-    HTTPService.prototype.patch = function (url, data) {
-        var headers = new http_1.Headers();
-        headers.append("Content-Type", "application/json");
-        return this._http.patch(url, data, { headers: headers });
-    };
-    HTTPService.prototype.delete = function (url) {
-        var headers = new http_1.Headers();
-        headers.append("Content-Type", "application/json");
-        return this._http.delete(url, { headers: headers });
-    };
     HTTPService.prototype.get = function (url, params) {
         var headers = new http_1.Headers();
         headers.append("Content-Type", "application/json");
@@ -49,8 +32,7 @@ var HTTPService = /** @class */ (function () {
     };
     HTTPService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http,
-            constant_1.Constants])
+        __metadata("design:paramtypes", [http_1.Http])
     ], HTTPService);
     return HTTPService;
 }());

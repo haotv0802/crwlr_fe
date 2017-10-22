@@ -13,20 +13,10 @@ var Constants = /** @class */ (function () {
         // Toaster types
         this.TOASTER_SUCCESS = "success";
         this.TOASTER_ERROR = "error";
-        // HTTP Status
-        this.HTTP_STATUS_OK = 200;
-        this.HTTP_STATUS_NO_CONTENT = 204;
-        this.HTTP_STATUS_BAD_REQUEST = 400;
-        this.HTTP_STATUS_UNAUTHORIZED = 401;
-        //  Expenses
-        this.EXPENSES_SERVICE_URL = this.HOST + '/expenses';
-        this.EXPENSES_DETAILS_SERVICE_URL = this.HOST + '/expensesDetails';
-        this.EXPENSES_PREVIOUS_SERVICE_URL = this.HOST + '/previousExpensesDetails';
         //  Expenses
         this.CRAWLER_COLLECTED_DATA = this.HOST + '/crawler/crawledData';
+        this.CRAWLER_CRAWLING_DATA = this.HOST + '/crawler/crawlingData';
         this.CRAWLER_VENDORS = this.HOST + '/crawler/vendors';
-        // Names of Components
-        this.WELCOME_URL = 'welcome';
     }
     Constants = __decorate([
         core_1.Injectable()

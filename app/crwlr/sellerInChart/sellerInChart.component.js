@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var sellerInChart_service_1 = require("./sellerInChart.service");
+var Rx_1 = require("rxjs/Rx");
 var SellerInChartComponent = /** @class */ (function () {
     function SellerInChartComponent(_sellerInChartService) {
         this._sellerInChartService = _sellerInChartService;
+        this.chartDisplay = false;
         this.loaderOpen = true;
         this.barChartOptions = {
             scaleShowVerticalLines: false,
@@ -38,40 +40,42 @@ var SellerInChartComponent = /** @class */ (function () {
         var _this = this;
         this._sellerInChartService.getAllVendors().subscribe(function (data) {
             _this.vendors = data;
-            _this.barChartData = [];
-            _this.barChartTimeOnLazadaData = [];
-            _this.barChartSellerSizeData = [];
-            _this.barChartShipOnTimeData = [];
-            for (var i = 0; i < _this.vendors.length; i++) {
-                var timeOneLazadaData = {
-                    data: [
-                        _this.vendors[i].timeOnLazada
-                    ],
-                    label: _this.vendors[i].name
-                };
-                var sellerSize = {
-                    data: [
-                        _this.vendors[i].size
-                    ],
-                    label: _this.vendors[i].name
-                };
-                var shipOnTimeData = {
-                    data: [
-                        _this.vendors[i].shipOnTime
-                    ],
-                    label: _this.vendors[i].name
-                };
-                _this.barChartTimeOnLazadaData[i] = timeOneLazadaData;
-                _this.barChartSellerSizeData[i] = sellerSize;
-                _this.barChartShipOnTimeData[i] = shipOnTimeData;
+            console.log(_this.vendors);
+            if (data && data.length > 0) {
+                _this.chartDisplay = true;
+                _this.barChartData = [];
+                _this.barChartTimeOnLazadaData = [];
+                _this.barChartSellerSizeData = [];
+                _this.barChartShipOnTimeData = [];
+                for (var i = 0; i < _this.vendors.length; i++) {
+                    var timeOneLazadaData = {
+                        data: [
+                            _this.vendors[i].timeOnLazada
+                        ],
+                        label: _this.vendors[i].name
+                    };
+                    var sellerSize = {
+                        data: [
+                            _this.vendors[i].size
+                        ],
+                        label: _this.vendors[i].name
+                    };
+                    var shipOnTimeData = {
+                        data: [
+                            _this.vendors[i].shipOnTime
+                        ],
+                        label: _this.vendors[i].name
+                    };
+                    _this.barChartTimeOnLazadaData[i] = timeOneLazadaData;
+                    _this.barChartSellerSizeData[i] = sellerSize;
+                    _this.barChartShipOnTimeData[i] = shipOnTimeData;
+                }
             }
             _this.loaderOpen = false;
-            // let timer = Observable.interval(1000);
-            // timer.subscribe(
-            //   () => {
-            //     this.loaderOpen = false;
-            //   }
-            // );
+            var timer = Rx_1.Observable.interval(1000);
+            timer.subscribe(function () {
+                _this.loaderOpen = false;
+            });
         }, function (error) {
             console.log(error);
         });

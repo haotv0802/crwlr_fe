@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var ng2_smart_table_1 = require("ng2-smart-table");
 var crawledData_service_1 = require("./crawledData.service");
 var CrawledDataComponent = /** @class */ (function () {
     function CrawledDataComponent(_router, _crawledDataService) {
@@ -95,14 +96,39 @@ var CrawledDataComponent = /** @class */ (function () {
     CrawledDataComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._crawledDataService.getCollectedData().subscribe(function (data) {
-            _this.collectedData = data;
+            _this.collectedData = new ng2_smart_table_1.LocalDataSource(data);
             _this.loaderOpen = false;
-            // let timer = Observable.interval(1000);
-            // timer.subscribe(
-            //   () => {
-            //
-            //   }
-            // );
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    CrawledDataComponent.prototype.recrawl = function () {
+        var _this = this;
+        this.loaderOpen = true;
+        // let timer = Observable.interval(1000);
+        // timer.subscribe(
+        //   () => {
+        //     this.loaderOpen = false;
+        //   }
+        // );
+        // console.log('recrawling');
+        // Observable.forkJoin(
+        //   this._crawledDataService.recrawl(),
+        //   this._crawledDataService.getCollectedData()
+        // ).subscribe(
+        //   (data) => {
+        //     console.log(data);
+        //     this.loaderOpen = false;
+        //     this.collectedData.load(data);
+        //     // this.collectedData = data;
+        //   }, (error) => {
+        //     console.log(error);
+        //   }
+        // );
+        this._crawledDataService.recrawl().subscribe(function (data) {
+            console.log(data);
+            // this.collectedData.load(data);
+            _this.loaderOpen = false;
         }, function (error) {
             console.log(error);
         });

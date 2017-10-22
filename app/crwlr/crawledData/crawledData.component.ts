@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {VendorProductPresenter} from "./vendorProductPresenter";
-import {Observable} from "rxjs/Observable";
+import {LocalDataSource} from 'ng2-smart-table';
 import {CrawledDataService} from "./crawledData.service";
 
 @Component({
@@ -11,7 +10,7 @@ import {CrawledDataService} from "./crawledData.service";
 export class CrawledDataComponent implements OnInit {
   pageTitle: string;
   loaderOpen: boolean = true;
-  collectedData: VendorProductPresenter[];
+  collectedData: LocalDataSource;
   settings = {
     columns: {
       name: {
@@ -96,19 +95,44 @@ export class CrawledDataComponent implements OnInit {
   ngOnInit(): void {
     this._crawledDataService.getCollectedData().subscribe(
       (data) => {
-        this.collectedData = data;
+        this.collectedData = new LocalDataSource(data);
         this.loaderOpen = false;
-        // let timer = Observable.interval(1000);
-        // timer.subscribe(
-        //   () => {
-        //
-        //   }
-        // );
-
       }, (error) => {
         console.log(error);
       }
     );
   }
 
+  public recrawl(): void {
+    this.loaderOpen = true;
+    // let timer = Observable.interval(1000);
+    // timer.subscribe(
+    //   () => {
+    //     this.loaderOpen = false;
+    //   }
+    // );
+    // console.log('recrawling');
+    // Observable.forkJoin(
+    //   this._crawledDataService.recrawl(),
+    //   this._crawledDataService.getCollectedData()
+    // ).subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //     this.loaderOpen = false;
+    //     this.collectedData.load(data);
+    //     // this.collectedData = data;
+    //   }, (error) => {
+    //     console.log(error);
+    //   }
+    // );
+    this._crawledDataService.recrawl().subscribe(
+      (data) => {
+        console.log(data);
+        // this.collectedData.load(data);
+        this.loaderOpen = false;
+      }, (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

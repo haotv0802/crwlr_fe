@@ -2,8 +2,10 @@
 <div class='panel panel-info' *ngIf="!loaderOpen" style="width: 1150px; height: auto">
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
+        <button class='btn btn-primary' style="float: right;" (click)='recrawl()'>
+            Recrawl
+        </button>
     </div>
-
     <ng2-smart-table [settings]="settings" [source]="collectedData"></ng2-smart-table>
 
     <modal (modalOutput)="getData($event)">

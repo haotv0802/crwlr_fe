@@ -17,4 +17,10 @@ export class CrawledDataService {
       .map((res) => { return <VendorProductPresenter[]> res.json(); })
       ;
   }
+
+  recrawl(): Observable<any> {
+    return this._httpService.get(this._constants.CRAWLER_CRAWLING_DATA)
+      .map((res) => { return <any> res.json(); })
+      ;
+  }
 }

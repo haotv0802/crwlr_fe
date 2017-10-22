@@ -21,6 +21,10 @@ var CrawledDataService = /** @class */ (function () {
         return this._httpService.get(this._constants.CRAWLER_COLLECTED_DATA)
             .map(function (res) { return res.json(); });
     };
+    CrawledDataService.prototype.recrawl = function () {
+        return this._httpService.get(this._constants.CRAWLER_CRAWLING_DATA)
+            .map(function (res) { return res.json(); });
+    };
     CrawledDataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [HTTP_service_1.HTTPService,

@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {SellerInChartService} from "./sellerInChart.service";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/Rx";
 import {VendorPresenter} from "./vendorPresenter";
 
 @Component({
@@ -9,6 +9,7 @@ import {VendorPresenter} from "./vendorPresenter";
 })
 export class SellerInChartComponent implements OnInit {
   pageTitle: string;
+  chartDisplay: boolean = false;
   loaderOpen: boolean = true;
   vendors: VendorPresenter[];
   public barChartOptions: any = {
@@ -44,41 +45,44 @@ export class SellerInChartComponent implements OnInit {
     this._sellerInChartService.getAllVendors().subscribe(
       (data) => {
         this.vendors = data;
-        this.barChartData = [];
-        this.barChartTimeOnLazadaData = [];
-        this.barChartSellerSizeData = [];
-        this.barChartShipOnTimeData = [];
-        for(let i = 0; i < this.vendors.length; i++) {
-          let timeOneLazadaData = {
-            data: [
-              this.vendors[i].timeOnLazada
-            ],
-            label: this.vendors[i].name
-          };
-          let sellerSize = {
-            data: [
-              this.vendors[i].size
-            ],
-            label: this.vendors[i].name
-          };
-          let shipOnTimeData = {
-            data: [
-              this.vendors[i].shipOnTime
-            ],
-            label: this.vendors[i].name
-          };
-          this.barChartTimeOnLazadaData[i] = timeOneLazadaData;
-          this.barChartSellerSizeData[i] = sellerSize;
-          this.barChartShipOnTimeData[i] = shipOnTimeData;
+        console.log(this.vendors);
+        if (data && data.length > 0) {
+          this.chartDisplay = true;
+          this.barChartData = [];
+          this.barChartTimeOnLazadaData = [];
+          this.barChartSellerSizeData = [];
+          this.barChartShipOnTimeData = [];
+          for(let i = 0; i < this.vendors.length; i++) {
+            let timeOneLazadaData = {
+              data: [
+                this.vendors[i].timeOnLazada
+              ],
+              label: this.vendors[i].name
+            };
+            let sellerSize = {
+              data: [
+                this.vendors[i].size
+              ],
+              label: this.vendors[i].name
+            };
+            let shipOnTimeData = {
+              data: [
+                this.vendors[i].shipOnTime
+              ],
+              label: this.vendors[i].name
+            };
+            this.barChartTimeOnLazadaData[i] = timeOneLazadaData;
+            this.barChartSellerSizeData[i] = sellerSize;
+            this.barChartShipOnTimeData[i] = shipOnTimeData;
+          }
         }
         this.loaderOpen = false;
-        // let timer = Observable.interval(1000);
-        // timer.subscribe(
-        //   () => {
-        //     this.loaderOpen = false;
-        //   }
-        // );
-
+        let timer = Observable.interval(1000);
+        timer.subscribe(
+          () => {
+            this.loaderOpen = false;
+          }
+        );
       }, (error) => {
         console.log(error);
       }
