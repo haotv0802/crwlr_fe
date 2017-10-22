@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {LocalDataSource} from 'ng2-smart-table';
+import {Observable} from "rxjs/Observable";
 import {CrawledDataService} from "./crawledData.service";
 
 @Component({
@@ -111,24 +112,18 @@ export class CrawledDataComponent implements OnInit {
     //     this.loaderOpen = false;
     //   }
     // );
-    // console.log('recrawling');
-    // Observable.forkJoin(
-    //   this._crawledDataService.recrawl(),
-    //   this._crawledDataService.getCollectedData()
-    // ).subscribe(
-    //   (data) => {
-    //     console.log(data);
-    //     this.loaderOpen = false;
-    //     this.collectedData.load(data);
-    //     // this.collectedData = data;
-    //   }, (error) => {
-    //     console.log(error);
-    //   }
-    // );
+    console.log('recrawling');
     this._crawledDataService.recrawl().subscribe(
       (data) => {
         console.log(data);
-        // this.collectedData.load(data);
+        this._crawledDataService.getCollectedData().subscribe(
+          (data) => {
+            this.collectedData = new LocalDataSource(data);
+            this.loaderOpen = false;
+          }, (error) => {
+            console.log(error);
+          }
+        );
         this.loaderOpen = false;
       }, (error) => {
         console.log(error);
