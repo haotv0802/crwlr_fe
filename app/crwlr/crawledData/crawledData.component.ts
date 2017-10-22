@@ -1,8 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {LocalDataSource} from 'ng2-smart-table';
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/Rx";
 import {CrawledDataService} from "./crawledData.service";
+import {ToasterService} from "angular2-toaster";
+import {Constants} from "../../common/constant";
 
 @Component({
   moduleId: module.id,
@@ -88,7 +90,9 @@ export class CrawledDataComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _crawledDataService: CrawledDataService
+    private _crawledDataService: CrawledDataService,
+    private _toasterService: ToasterService,
+    private _constants: Constants
   ) {
     this.pageTitle = 'Collected Data';
   }
@@ -97,7 +101,12 @@ export class CrawledDataComponent implements OnInit {
     this._crawledDataService.getCollectedData().subscribe(
       (data) => {
         this.collectedData = new LocalDataSource(data);
-        this.loaderOpen = false;
+        let timer = Observable.interval(700);
+        timer.subscribe(
+          () => {
+            this.loaderOpen = false;
+          }
+        );
       }, (error) => {
         console.log(error);
       }
@@ -106,12 +115,6 @@ export class CrawledDataComponent implements OnInit {
 
   public recrawl(): void {
     this.loaderOpen = true;
-    // let timer = Observable.interval(1000);
-    // timer.subscribe(
-    //   () => {
-    //     this.loaderOpen = false;
-    //   }
-    // );
     console.log('recrawling');
     this._crawledDataService.recrawl().subscribe(
       (data) => {
@@ -119,7 +122,13 @@ export class CrawledDataComponent implements OnInit {
         this._crawledDataService.getCollectedData().subscribe(
           (data) => {
             this.collectedData = new LocalDataSource(data);
-            this.loaderOpen = false;
+            let timer = Observable.interval(500);
+            timer.subscribe(
+              () => {
+                this.loaderOpen = false;
+              }
+            );
+            this._toasterService.pop(this._constants.TOASTER_SUCCESS, 'Data Crawled Successfully');
           }, (error) => {
             console.log(error);
           }

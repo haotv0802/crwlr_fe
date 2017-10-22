@@ -76,7 +76,6 @@ export class SellerInChartComponent implements OnInit {
             this.barChartShipOnTimeData[i] = shipOnTimeData;
           }
         }
-        this.loaderOpen = false;
         let timer = Observable.interval(1000);
         timer.subscribe(
           () => {

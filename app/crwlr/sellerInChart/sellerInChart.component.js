@@ -71,7 +71,6 @@ var SellerInChartComponent = /** @class */ (function () {
                     _this.barChartShipOnTimeData[i] = shipOnTimeData;
                 }
             }
-            _this.loaderOpen = false;
             var timer = Rx_1.Observable.interval(1000);
             timer.subscribe(function () {
                 _this.loaderOpen = false;

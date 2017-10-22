@@ -12,11 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var ng2_smart_table_1 = require("ng2-smart-table");
+var Rx_1 = require("rxjs/Rx");
 var crawledData_service_1 = require("./crawledData.service");
+var angular2_toaster_1 = require("angular2-toaster");
+var constant_1 = require("../../common/constant");
 var CrawledDataComponent = /** @class */ (function () {
-    function CrawledDataComponent(_router, _crawledDataService) {
+    function CrawledDataComponent(_router, _crawledDataService, _toasterService, _constants) {
         this._router = _router;
         this._crawledDataService = _crawledDataService;
+        this._toasterService = _toasterService;
+        this._constants = _constants;
         this.loaderOpen = true;
         this.settings = {
             columns: {
@@ -97,7 +102,10 @@ var CrawledDataComponent = /** @class */ (function () {
         var _this = this;
         this._crawledDataService.getCollectedData().subscribe(function (data) {
             _this.collectedData = new ng2_smart_table_1.LocalDataSource(data);
-            _this.loaderOpen = false;
+            var timer = Rx_1.Observable.interval(700);
+            timer.subscribe(function () {
+                _this.loaderOpen = false;
+            });
         }, function (error) {
             console.log(error);
         });
@@ -105,29 +113,19 @@ var CrawledDataComponent = /** @class */ (function () {
     CrawledDataComponent.prototype.recrawl = function () {
         var _this = this;
         this.loaderOpen = true;
-        // let timer = Observable.interval(1000);
-        // timer.subscribe(
-        //   () => {
-        //     this.loaderOpen = false;
-        //   }
-        // );
-        // console.log('recrawling');
-        // Observable.forkJoin(
-        //   this._crawledDataService.recrawl(),
-        //   this._crawledDataService.getCollectedData()
-        // ).subscribe(
-        //   (data) => {
-        //     console.log(data);
-        //     this.loaderOpen = false;
-        //     this.collectedData.load(data);
-        //     // this.collectedData = data;
-        //   }, (error) => {
-        //     console.log(error);
-        //   }
-        // );
+        console.log('recrawling');
         this._crawledDataService.recrawl().subscribe(function (data) {
             console.log(data);
-            // this.collectedData.load(data);
+            _this._crawledDataService.getCollectedData().subscribe(function (data) {
+                _this.collectedData = new ng2_smart_table_1.LocalDataSource(data);
+                var timer = Rx_1.Observable.interval(500);
+                timer.subscribe(function () {
+                    _this.loaderOpen = false;
+                });
+                _this._toasterService.pop(_this._constants.TOASTER_SUCCESS, 'Data Crawled Successfully');
+            }, function (error) {
+                console.log(error);
+            });
             _this.loaderOpen = false;
         }, function (error) {
             console.log(error);
@@ -139,7 +137,9 @@ var CrawledDataComponent = /** @class */ (function () {
             templateUrl: 'crawledData.component.html'
         }),
         __metadata("design:paramtypes", [router_1.Router,
-            crawledData_service_1.CrawledDataService])
+            crawledData_service_1.CrawledDataService,
+            angular2_toaster_1.ToasterService,
+            constant_1.Constants])
     ], CrawledDataComponent);
     return CrawledDataComponent;
 }());
